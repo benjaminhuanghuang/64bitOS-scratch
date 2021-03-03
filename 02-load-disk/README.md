@@ -1,4 +1,5 @@
-## OS on floppy disk
+## Read disk 
+https://www.youtube.com/watch?v=zrfGCJyua6Y&list=PLxN4E629pPnKKqYsNVXpmCza8l0Jb6l8-&index=3
 https://github.com/Absurdponcho/YoutubeOS
 
 

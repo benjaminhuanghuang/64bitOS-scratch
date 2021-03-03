@@ -1,8 +1,6 @@
-## OS on floppy disk
+## MBR Hello
+
+https://www.youtube.com/watch?v=rWFR4NC20UA&list=PLxN4E629pPnKKqYsNVXpmCza8l0Jb6l8-&index=2
 https://github.com/Absurdponcho/YoutubeOS
 
-
-bootloader.bin is mbr, it loads 4 sectors from 2nd sector
-
-extend.bin was written to 2nd sector
 
