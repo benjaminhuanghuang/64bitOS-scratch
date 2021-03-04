@@ -1,6 +1,7 @@
 
 #include "textPrint.cpp"
 
+extern const char Test[];
 
 extern "C" void _start() {
 
@@ -10,5 +11,6 @@ extern "C" void _start() {
 	PrintString("Hello world", BACKGROUND_BLINKINGBLUE | FOREGROUND_CYAN);
 	SetCursorPosition(PositionFromCoords( 0, 0));
 
+	PrintString(Test);
 	return;
 }

@@ -6,3 +6,7 @@
   db 0
   %1_size: dq %1_size - %1
 %endmacro
+ 
+
+IncBin Test, "test.txt"
+

@@ -6,6 +6,7 @@ INPUT
 (
   extend.o
   kernel.o
+  binary.o
 )
 
 OUTPUT
