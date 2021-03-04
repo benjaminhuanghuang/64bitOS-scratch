@@ -64,7 +64,7 @@ Start64Bit:
 	rep stosq
 	; rep指令的目的是重复其上面的指令.ECX的值是重复的次数.
 	; STOS指令的作用是将eax中的值拷贝到ES:EDI指向的地址.
-	
+	call _start
 	jmp $
 
 
