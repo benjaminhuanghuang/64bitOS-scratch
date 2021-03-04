@@ -1,4 +1,4 @@
-## GCC Cross Compiler + Writing C Code
+# GCC Cross Compiler + Writing C Code
 
 https://www.youtube.com/watch?v=-v6uRjpR_0M&list=PLxN4E629pPnKKqYsNVXpmCza8l0Jb6l8-&index=6&ab_channel=Poncho
 
