@@ -1,10 +1,8 @@
-[org 0x7e00]
-
 jmp EnterProtecedMode
 
-
-%include "print.asm"
 %include "gdt.asm"
+%include "print.asm"
+
 EnterProtecedMode:
   cli                    ; disalbe interrupts
   call EnableA20
@@ -58,6 +56,7 @@ StartProtectedMode:
 	jmp codeseg:Start64Bit
 
 [bits 64]
+[extern _start]
 Start64Bit:
 	mov edi, 0xb8000
 	mov rax, 0x1f201f201f201f20
@@ -66,7 +65,6 @@ Start64Bit:
 	; rep指令的目的是重复其上面的指令.ECX的值是重复的次数.
 	; STOS指令的作用是将eax中的值拷贝到ES:EDI指向的地址.
 	
-	call _start
 	jmp $
 
 
