@@ -66,8 +66,22 @@ Start64Bit:
 	rep stosq
 	; rep指令的目的是重复其上面的指令.ECX的值是重复的次数.
 	; STOS指令的作用是将eax中的值拷贝到ES:EDI指向的地址.
+
+	call ActivateSSE
 	call _start
 	jmp $
 
+; 64bit float
+ActivateSSE:
+	mov rax, cr0
+	and ax, 0b11111101
+	or ax, 0b00000001
+	mov cr0, rax
+
+	mov rax, cr4
+	or ax, 0b1100000000
+	mov cr4, rax
+
+	ret
 
 times 2048 - ($-$$)	db 0  
