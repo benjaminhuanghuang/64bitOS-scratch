@@ -1,5 +1,5 @@
 GCCPARAMS = -ffreestanding -mno-red-zone -m64 -c
-OBJS = kernel.obj idt.obj detectmem.obj 
+OBJS = extend.o kernel.o binary.o idt.o io.o textPrint.o memMap.o keyboard.o 
 
 
 env:
@@ -8,32 +8,20 @@ env:
 
 loader.bin: bootloader.asm
 	nasm bootloader.asm -f bin -o loader.bin
+	
+extend.o: extend.asm
+	nasm extend.asm -f elf64 -o extend.o
 
 binary.o: binary.asm
 	nasm binary.asm -f elf64 -o binary.o
 
-kernel.o: kernel.cpp
-	x86_64-elf-gcc $(GCCPARAMS) -o kernel.o kernel.cpp
 
-idt.o: idt.cpp
-	x86_64-elf-gcc $(GCCPARAMS) -o idt.o idt.cpp
+# general rules
+%.o : %.cpp
+	x86_64-elf-gcc $(GCCPARAMS) -o $*.o $*.cpp
 
-io.o: io.cpp
-	x86_64-elf-gcc $(GCCPARAMS) -o io.o io.cpp
 
-memMap.o: memMap.cpp
-	x86_64-elf-gcc $(GCCPARAMS) -o memMap.o memMap.cpp
-
-textPrint.o: textPrint.cpp
-	x86_64-elf-gcc $(GCCPARAMS) -o textPrint.o textPrint.cpp
-
-keyboard.o: keyboard.cpp
-	x86_64-elf-gcc $(GCCPARAMS) -o keyboard.o keyboard.cpp
-
-extend.o: extend.asm
-	nasm extend.asm -f elf64 -o extend.o
-
-kernel.bin: extend.o kernel.o binary.o idt.o io.o textPrint.o memMap.o keyboard.o
+kernel.bin: $(OBJS)
 	ld -T linker.ld
 
 install: clean loader.bin kernel.bin
