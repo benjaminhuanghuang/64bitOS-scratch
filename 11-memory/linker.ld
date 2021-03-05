@@ -7,6 +7,11 @@ INPUT
   extend.o
   kernel.o
   binary.o
+  idt.o
+  io.o
+  textPrint.o
+  keyboard.o
+  memMap.o
 )
 
 OUTPUT

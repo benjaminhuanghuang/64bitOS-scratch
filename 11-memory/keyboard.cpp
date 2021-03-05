@@ -1,6 +1,4 @@
-#pragma once
-#include "typedefs.h"
-#include "textPrint.cpp"
+#include "keyboard.h"
 
 bool LeftShiftPressed = false;
 bool RightShiftPressed = false;

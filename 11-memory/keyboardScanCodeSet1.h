@@ -1,3 +1,5 @@
+#pragma once
+
 namespace KBSet1{
   const char ScanCodeLookupTable[] ={
     0, 0, '1', '2',

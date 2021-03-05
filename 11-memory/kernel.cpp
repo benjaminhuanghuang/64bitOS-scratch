@@ -1,7 +1,9 @@
 
-#include "textPrint.cpp"
-#include "idt.cpp"
-#include "keyboard.cpp"
+#include "textPrint.h"
+#include "idt.h"
+#include "keyboard.h"
+#include "memMap.h"
+
 
 extern const char Test[];
 
@@ -17,5 +19,12 @@ extern "C" void _start() {
 	PrintString(Test);
 
 	MainKeyboardHandler = KeyboardHandler;
+
+	for (uint_8 i =0 ; i < MemoryRegionCount; i++){
+		MemoryMapEntry *memMap= (MemoryMapEntry*)0x5000;
+		memMap +=i;
+		PrintMemoryMap(memMap, CursorPosition);
+	}
+
 	return;
 }

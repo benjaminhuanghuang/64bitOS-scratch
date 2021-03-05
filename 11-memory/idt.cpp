@@ -1,22 +1,14 @@
-#pragma once
 #include "typedefs.h"
 #include "keyboardScanCodeSet1.h"
-#include "IO.cpp"
-#include "textPrint.cpp"
+#include "io.h"
+#include "textPrint.h"
+#include "idt.h"
 
-struct IDT64{
-  uint_16 offset_low;
-  uint_16 selector;
-  uint_8 ist;
-  uint_8 types_attr;
-  uint_16 offset_mid;
-  uint_32 offset_high;
-  uint_32 zero;
-};
 
 extern IDT64 _idt[256];
 extern uint_64 isr1;
 extern "C" void LoadIDT();
+void(*MainKeyboardHandler)(uint_8 scanCode, uint_8 chr);
 
 void InitializeIDT(){
 
@@ -35,13 +27,11 @@ void InitializeIDT(){
 	LoadIDT();
 }
 
-void(*MainKeyboardHandler)(uint_8 scanCode, uint_8 chr);
 
 extern "C" void isr1_handler(){
 	uint_8 scanCode = inb(0x60);
 	uint_8 chr = 0;
 
-	// 
 	if (scanCode < 0x3A){
 		chr = KBSet1::ScanCodeLookupTable[scanCode];
 	}

@@ -2,8 +2,10 @@ jmp EnterProtecedMode
 
 %include "gdt.asm"
 %include "print.asm"
+%include "detectmem.asm"
 
 EnterProtecedMode:
+	call DetectMemory
   cli                    ; disalbe interrupts
   call EnableA20
   lgdt [gdt_descriptor]
