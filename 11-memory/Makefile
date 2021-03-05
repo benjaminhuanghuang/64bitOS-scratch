@@ -1,5 +1,5 @@
 GCCPARAMS = -ffreestanding -mno-red-zone -m64 -c
-OBJS = extend.o kernel.o binary.o idt.o io.o textPrint.o memMap.o keyboard.o 
+OBJS = extend.o kernel.o binary.o idt.o io.o textPrint.o memMap.o keyboard.o heap.o memory.o
 
 
 env:
@@ -14,7 +14,6 @@ extend.o: extend.asm
 
 binary.o: binary.asm
 	nasm binary.asm -f elf64 -o binary.o
-
 
 # general rules
 %.o : %.cpp

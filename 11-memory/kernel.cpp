@@ -3,7 +3,7 @@
 #include "idt.h"
 #include "keyboard.h"
 #include "memMap.h"
-
+#include "heap.h"
 
 extern const char Test[];
 
